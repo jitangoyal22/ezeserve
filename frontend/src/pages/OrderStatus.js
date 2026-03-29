@@ -29,25 +29,25 @@ const OrderStatus = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FAFAFA' }}>
-        <div className="text-lg" style={{ color: '#52525B' }}>Loading order...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%)' }}>
+        <div className="text-lg font-semibold" style={{ color: '#475569' }}>Loading order...</div>
       </div>
     );
   }
 
   if (!order) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FAFAFA' }}>
-        <div className="text-lg" style={{ color: '#EF4444' }}>Order not found</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%)' }}>
+        <div className="text-lg font-semibold" style={{ color: '#EF4444' }}>Order not found</div>
       </div>
     );
   }
 
   const statusConfig = {
-    pending: { icon: Clock, color: '#EAB308', label: 'Order Received' },
-    preparing: { icon: ChefHat, color: '#3B82F6', label: 'Preparing' },
-    ready: { icon: CheckCircle, color: '#4F6F52', label: 'Ready for Pickup' },
-    completed: { icon: CheckCircle, color: '#4F6F52', label: 'Completed' },
+    pending: { icon: Clock, color: '#F59E0B', label: 'Order Received' },
+    preparing: { icon: ChefHat, color: '#667eea', label: 'Preparing' },
+    ready: { icon: CheckCircle, color: '#10B981', label: 'Ready for Pickup' },
+    completed: { icon: CheckCircle, color: '#10B981', label: 'Completed' },
     rejected: { icon: CheckCircle, color: '#EF4444', label: 'Rejected' }
   };
 
@@ -55,50 +55,58 @@ const OrderStatus = () => {
   const StatusIcon = status.icon;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FAFAFA', fontFamily: 'Manrope, sans-serif' }}>
-      <div className="p-4 sm:p-6 max-w-2xl mx-auto">
-        <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E4E4E7' }}>
+    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%)', fontFamily: 'Inter, sans-serif' }}>
+      <div className="p-6 max-w-2xl mx-auto">
+        <div className="rounded-3xl p-8 text-center gradient-card">
           <StatusIcon size={64} style={{ color: status.color, margin: '0 auto' }} />
-          <h1 className="text-3xl mt-6 tracking-tight" style={{ fontFamily: 'Cabinet Grotesk, sans-serif', color: '#1A1A1A', fontWeight: '700' }}>
+          <h1 className="text-3xl mt-6 font-bold" style={{ color: '#1E293B' }}>
             {status.label}
           </h1>
           {order.waiting_time && (
-            <p className="text-lg mt-2" style={{ color: '#52525B' }}>Estimated waiting time: {order.waiting_time} minutes</p>
+            <p className="text-lg mt-2 font-medium" style={{ color: '#475569' }}>Estimated waiting time: {order.waiting_time} minutes</p>
           )}
-          <div className="mt-6 p-4 rounded-xl" style={{ backgroundColor: '#F4F4F5' }}>
-            <p className="text-sm" style={{ color: '#52525B' }}>Order ID</p>
-            <p className="text-xl font-mono font-bold mt-1" style={{ color: '#1A1A1A' }}>{order.id.slice(0, 8).toUpperCase()}</p>
+          <div className="mt-6 p-4 rounded-2xl" style={{ backgroundColor: 'rgba(102, 126, 234, 0.1)' }}>
+            <p className="text-sm font-medium" style={{ color: '#475569' }}>Order ID</p>
+            <p className="text-xl font-mono font-bold mt-1" style={{ color: '#1E293B' }}>{order.id.slice(0, 8).toUpperCase()}</p>
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl p-6" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E4E4E7' }}>
-          <h2 className="text-xl font-semibold mb-4" style={{ color: '#1A1A1A' }}>Order Details</h2>
+        <div className="mt-6 rounded-3xl p-6 gradient-card">
+          <h2 className="text-xl font-semibold mb-4" style={{ color: '#1E293B' }}>Order Details</h2>
           {order.table_number && (
-            <p className="text-sm mb-4" style={{ color: '#52525B' }}>Table: {order.table_number}</p>
+            <p className="text-sm mb-4 font-medium" style={{ color: '#475569' }}>Table: {order.table_number}</p>
           )}
           <div className="space-y-3">
             {order.items.map((item, index) => (
               <div key={index} className="flex justify-between items-center">
                 <div>
-                  <p className="font-medium" style={{ color: '#1A1A1A' }}>{item.name}</p>
-                  <p className="text-sm" style={{ color: '#52525B' }}>Qty: {item.quantity}</p>
+                  <p className="font-medium" style={{ color: '#1E293B' }}>{item.name}</p>
+                  <p className="text-sm" style={{ color: '#64748B' }}>Qty: {item.quantity}</p>
                 </div>
-                <p className="font-semibold" style={{ color: '#E25E3E' }}>₹{(item.price * item.quantity).toFixed(2)}</p>
+                <p className="font-semibold gradient-text" style={{ 
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}>₹{(item.price * item.quantity).toFixed(2)}</p>
               </div>
             ))}
           </div>
-          <div className="border-t mt-4 pt-4" style={{ borderColor: '#E4E4E7' }}>
+          <div className="border-t mt-4 pt-4" style={{ borderColor: '#E2E8F0' }}>
             <div className="flex justify-between items-center">
-              <span className="text-lg font-semibold" style={{ color: '#1A1A1A' }}>Total</span>
-              <span className="text-2xl font-bold" style={{ color: '#E25E3E' }}>₹{order.total_amount.toFixed(2)}</span>
+              <span className="text-lg font-semibold" style={{ color: '#1E293B' }}>Total</span>
+              <span className="text-2xl font-bold gradient-text" style={{ 
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>₹{order.total_amount.toFixed(2)}</span>
             </div>
           </div>
         </div>
 
         {order.customer_notes && (
-          <div className="mt-6 rounded-2xl p-6" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E4E4E7' }}>
-            <h3 className="text-sm font-semibold mb-2" style={{ color: '#52525B' }}>Special Instructions</h3>
-            <p style={{ color: '#1A1A1A' }}>{order.customer_notes}</p>
+          <div className="mt-6 rounded-3xl p-6 gradient-card">
+            <h3 className="text-sm font-semibold mb-2" style={{ color: '#64748B' }}>Special Instructions</h3>
+            <p style={{ color: '#1E293B' }}>{order.customer_notes}</p>
           </div>
         )}
       </div>

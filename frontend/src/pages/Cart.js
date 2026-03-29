@@ -73,14 +73,14 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: '#FAFAFA', fontFamily: 'Manrope, sans-serif' }}>
+      <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%)', fontFamily: 'Inter, sans-serif' }}>
         <div className="text-center">
-          <p className="text-xl" style={{ color: '#52525B' }}>Your cart is empty</p>
+          <p className="text-xl font-semibold" style={{ color: '#475569' }}>Your cart is empty</p>
           <Button
             data-testid="back-to-menu-btn"
             onClick={() => navigate(`/menu/${restaurantId}`)}
-            className="mt-6 rounded-full"
-            style={{ backgroundColor: '#E25E3E', color: '#FFFFFF' }}
+            className="mt-6 rounded-full font-medium"
+            style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: '#FFFFFF' }}
           >
             <ArrowLeft size={20} className="mr-2" />
             Back to Menu
@@ -91,50 +91,57 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FAFAFA', fontFamily: 'Manrope, sans-serif' }}>
-      <div className="sticky top-0 z-50" style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #E4E4E7' }}>
-        <div className="p-4 sm:p-6 flex items-center gap-4">
+    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%)', fontFamily: 'Inter, sans-serif' }}>
+      <div className="sticky top-0 z-50 glass-card" style={{ backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255, 255, 255, 0.3)' }}>
+        <div className="p-6 flex items-center gap-4">
           <button
             data-testid="back-arrow-btn"
             onClick={() => navigate(`/menu/${restaurantId}`)}
-            className="p-2 rounded-full transition-all duration-200 hover:bg-gray-100"
+            className="p-2 rounded-full transition-all duration-200 hover:bg-white/50"
           >
-            <ArrowLeft size={24} style={{ color: '#1A1A1A' }} />
+            <ArrowLeft size={24} style={{ color: '#667eea' }} />
           </button>
-          <h1 className="text-2xl sm:text-3xl tracking-tight" style={{ fontFamily: 'Cabinet Grotesk, sans-serif', color: '#1A1A1A', fontWeight: '700' }}>
+          <h1 className="text-3xl font-bold gradient-text" style={{ 
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
             Your Cart
           </h1>
         </div>
       </div>
 
-      <div className="p-4 sm:p-6 max-w-3xl mx-auto pb-32">
+      <div className="p-6 max-w-3xl mx-auto pb-32">
         <div className="space-y-4">
           {cart.map(item => (
             <div
               key={item.menu_item_id}
               data-testid={`cart-item-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-              className="rounded-xl p-4 flex items-center justify-between"
-              style={{ backgroundColor: '#FFFFFF', border: '1px solid #E4E4E7' }}
+              className="rounded-2xl p-5 flex items-center justify-between gradient-card"
             >
               <div className="flex-1">
-                <h3 className="font-semibold" style={{ color: '#1A1A1A' }}>{item.name}</h3>
-                <p className="text-sm mt-1" style={{ color: '#E25E3E', fontWeight: '600' }}>₹{item.price}</p>
+                <h3 className="font-semibold" style={{ color: '#1E293B' }}>{item.name}</h3>
+                <p className="text-sm mt-1 font-medium gradient-text" style={{ 
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}>₹{item.price}</p>
               </div>
               <div className="flex items-center gap-3">
                 <button
                   data-testid={`decrease-qty-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={() => updateQuantity(item.menu_item_id, -1)}
-                  className="p-2 rounded-full transition-all duration-200 hover:bg-gray-100"
+                  className="p-2 rounded-full transition-all duration-200 hover:bg-white/50"
                 >
-                  <Minus size={16} style={{ color: '#52525B' }} />
+                  <Minus size={16} style={{ color: '#475569' }} />
                 </button>
-                <span className="w-8 text-center font-semibold" style={{ color: '#1A1A1A' }}>{item.quantity}</span>
+                <span className="w-8 text-center font-semibold" style={{ color: '#1E293B' }}>{item.quantity}</span>
                 <button
                   data-testid={`increase-qty-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={() => updateQuantity(item.menu_item_id, 1)}
-                  className="p-2 rounded-full transition-all duration-200 hover:bg-gray-100"
+                  className="p-2 rounded-full transition-all duration-200 hover:bg-white/50"
                 >
-                  <Plus size={16} style={{ color: '#52525B' }} />
+                  <Plus size={16} style={{ color: '#475569' }} />
                 </button>
                 <button
                   data-testid={`remove-item-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -150,7 +157,7 @@ const Cart = () => {
 
         <div className="mt-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2" style={{ color: '#52525B' }}>Table Number (Optional)</label>
+            <label className="block text-sm font-medium mb-2" style={{ color: '#475569' }}>Table Number (Optional)</label>
             <Input
               data-testid="table-number-input"
               type="text"
@@ -158,39 +165,42 @@ const Cart = () => {
               onChange={(e) => setTableNumber(e.target.value)}
               placeholder="Enter table number"
               className="rounded-xl"
-              style={{ borderColor: '#E4E4E7' }}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', borderColor: '#E2E8F0' }}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2" style={{ color: '#52525B' }}>Special Instructions (Optional)</label>
+            <label className="block text-sm font-medium mb-2" style={{ color: '#475569' }}>Special Instructions (Optional)</label>
             <Textarea
               data-testid="special-notes-textarea"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Any special requests?"
               className="rounded-xl"
-              style={{ borderColor: '#E4E4E7' }}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', borderColor: '#E2E8F0' }}
               rows={3}
             />
           </div>
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 p-4 z-50" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #E4E4E7' }}>
+      <div className="fixed bottom-0 left-0 right-0 p-6 z-50 glass-card" style={{ backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255, 255, 255, 0.3)' }}>
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-lg font-semibold" style={{ color: '#1A1A1A' }}>Total</span>
-            <span className="text-2xl font-bold" style={{ color: '#E25E3E' }}>₹{cartTotal.toFixed(2)}</span>
+            <span className="text-lg font-semibold" style={{ color: '#1E293B' }}>Total</span>
+            <span className="text-2xl font-bold gradient-text" style={{ 
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>₹{cartTotal.toFixed(2)}</span>
           </div>
           <Button
             data-testid="place-order-btn"
             onClick={placeOrder}
             disabled={loading}
-            className="w-full rounded-full py-6 text-base font-semibold transition-all duration-200 active:scale-98"
+            className="w-full rounded-2xl py-4 text-base font-semibold transition-all duration-200 holographic"
             style={{
-              backgroundColor: '#E25E3E',
-              color: '#FFFFFF',
-              boxShadow: '0 20px 40px rgba(226,94,62,0.15)'
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: '#FFFFFF'
             }}
           >
             {loading ? 'Placing Order...' : 'Place Order'}
