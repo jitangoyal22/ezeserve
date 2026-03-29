@@ -1,107 +1,107 @@
 {
-  "theme": "dark",
-  "archetype": "7 (Electric & Neon - Cyber-Chic Variant)",
-  "design_philosophy": "A cutting-edge, futuristic approach combining high-contrast neon accents with deep void blacks. The design feels like a premium cyberpunk or Neo-Tokyo interface rather than a generic SaaS app. Prioritizes 'Optical Clarity' with crystal glassmorphism for floating elements and rigid, glowing borders for the admin dashboard.",
+  "theme": "light",
+  "archetype": "4 (Swiss & High-Contrast) + 7 (Electric & Neon Light Variant)",
+  "emotional_tone": "Modern, bright, cutting-edge, vibrant, fast, clinical-clean with energetic spikes",
   "colors": {
-    "background": "#050505",
-    "foreground": "#F4F4F5",
-    "card": "#0A0A0A",
-    "card_foreground": "#F4F4F5",
-    "popover": "#0A0A0A",
-    "popover_foreground": "#F4F4F5",
-    "primary": "#00FF66",
-    "primary_foreground": "#050505",
-    "secondary": "#111111",
-    "secondary_foreground": "#F4F4F5",
-    "muted": "#1A1A1A",
-    "muted_foreground": "#A1A1AA",
-    "accent": "#00E5FF",
-    "accent_foreground": "#050505",
-    "destructive": "#FF007F",
-    "destructive_foreground": "#F4F4F5",
-    "border": "rgba(255, 255, 255, 0.1)",
-    "input": "rgba(255, 255, 255, 0.1)",
-    "ring": "#00FF66"
-  },
-  "typography": {
-    "heading_font": "Unbounded",
-    "body_font": "Outfit",
-    "hierarchy": {
-      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-bold",
-      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold",
-      "h3": "text-xl sm:text-2xl tracking-tight font-medium",
-      "h4": "text-lg sm:text-xl tracking-tight font-medium",
-      "body": "text-base leading-relaxed text-muted-foreground",
-      "small": "text-sm text-muted-foreground",
-      "overline": "text-xs tracking-[0.2em] uppercase font-bold text-primary"
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#F4F5F7",
+      "tertiary": "#E2E4E9"
     },
-    "instruction": "Avoid 'Inter' for headings. Use Unbounded for a futuristic/technical vibe. Use Outfit for readable, geometric body text."
-  },
-  "layout_and_spacing": {
-    "spacing_scale": "Generous spacing. Use p-6, p-8, p-12 for containers.",
-    "admin_dashboard": {
-      "strategy": "The 'Control Room' Grid",
-      "grid_classes": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 or gap-6",
-      "rules": [
-        "Every pixel utilized, h-full on children.",
-        "Use rigid 1px borders (border-white/10) to separate data.",
-        "Real-time order feed uses col-span-1 row-span-2."
-      ]
+    "text": {
+      "primary": "#0A0A0A",
+      "secondary": "#4A4D54",
+      "muted": "#8A8D96"
     },
-    "customer_mobile": {
-      "strategy": "Mobile-First immersive experience",
-      "grid_classes": "flex flex-col gap-4",
-      "rules": [
-        "Product images must not exceed 60vh.",
-        "Use crystal glassmorphism for floating bottom navigation and sticky headers."
-      ]
+    "accents": {
+      "electric_lime": "#CCFF00",
+      "hot_pink": "#FF0055",
+      "ultramarine": "#0033FF",
+      "warning_orange": "#FF4400"
+    },
+    "status": {
+      "success": "#00E5FF",
+      "error": "#FF0055",
+      "warning": "#FFCC00"
     }
   },
-  "surface_styles": {
-    "cards": "Flat background (bg-[#0A0A0A]), 1px border (border-white/10), no shadow. Hover: border-[#00FF66]/50 and -translate-y-1 transition.",
-    "glassmorphism": "Crystal Glass variant for sticky headers/FABs: bg-black/60, backdrop-blur-xl, border-b border-white/10. Must have 1px inner stroke.",
-    "neon_borders": "For active/new orders in the admin panel, use a glowing border effect or a neon left border (border-l-4 border-l-primary)."
+  "typography": {
+    "fonts": {
+      "headings": "'Outfit', sans-serif",
+      "body": "'DM Sans', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "scales": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-black",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-bold",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm tracking-widest uppercase font-bold"
+    }
+  },
+  "layout": {
+    "spacing_system": "Generous Spacing (p-6, p-8, p-12) for containers with internal padding. Mobile images max-h-[80vh].",
+    "grid_modes": {
+      "marketing": "MODE A (Tetris Grid) - Asymmetry, gap-8 to gap-12. Never fill 100% perfectly, leave negative space.",
+      "dashboard": "MODE B (Control Room Grid) - Density, gap-4 to gap-6. Every pixel utilized, h-full on children."
+    }
   },
   "components": {
-    "buttons": "Sharp edges (rounded-none or max rounded-sm). Primary buttons use bg-primary text-black hover:brightness-110. Accent buttons use bg-accent text-black.",
-    "inputs": "Shadcn defaults customized to bg-[#111111] border-white/10 focus:border-primary focus:ring-1 focus:ring-primary.",
-    "dialogs": "Dark glass overlays (bg-black/80 backdrop-blur-sm). Modal body uses bg-[#0A0A0A] border border-white/10."
+    "cards": {
+      "style": "Flat background (bg-white), crisp 1px border (border-black/10), no soft/muddy shadows. Sharp corners (rounded-none or max rounded-sm).",
+      "hover": "Slight lift (-translate-y-1), crisp neon shadow (e.g. shadow-[4px_4px_0px_#CCFF00] or shadow-[0_0_15px_rgba(204,255,0,0.5)]) and black border."
+    },
+    "buttons": {
+      "primary": "bg-[#0A0A0A] text-white hover:bg-[#CCFF00] hover:text-[#0A0A0A] transition-colors rounded-none px-6 py-3 font-bold uppercase tracking-widest",
+      "secondary": "bg-transparent border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors rounded-none px-6 py-3 font-bold uppercase tracking-widest"
+    },
+    "glassmorphism": {
+      "style": "High-opacity Crystal Glass: bg-white/80 backdrop-blur-xl border-b border-black/10 shadow-sm (use for sticky headers and bottom nav)"
+    }
   },
-  "animation_and_motion": {
-    "hover_states": "All interactives must explicitly set hover text/bg colors to maintain contrast. Buttons should have slight scale (active:scale-95).",
-    "page_transitions": "Use Framer Motion for subtle fade-in and slide-up (y: 20, opacity: 0 -> y: 0, opacity: 1) on lists/menus."
+  "icons": {
+    "library": "lucide-react",
+    "style": "Crisp, 1.5 stroke width, geometric."
   },
-  "accessibility_and_testing": {
-    "testing_attributes": "All interactive elements MUST include data-testid attribute (e.g., data-testid='order-submit-button').",
-    "contrast": "Text over images must use bg-black/50 overlay. Ensure neon primary (#00FF66) is legible against dark backgrounds."
-  },
-  "media_assets": {
+  "media": {
     "images": {
       "hero_background": {
-        "url": "https://images.unsplash.com/photo-1764303017897-16f5009d2bb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMG5lb24lMjBncmVlbiUyMHRlY2glMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NDgwOTY4MXww&ixlib=rb-4.1.0&q=85",
-        "description": "Abstract glowing green rectangles on a dark background. Use for auth screens or global backgrounds with high opacity overlay."
+        "url": "https://static.prod-images.emergentagent.com/jobs/39b9118e-ff39-4415-a661-464b2b17a5fd/images/cb11ff9bc385d81384f9e31a2a040c67793248cd140d9ec7a8d3c99d8a627c2f.png",
+        "description": "Bright futuristic cafe interior for landing page hero or auth background."
       },
-      "restaurant_interior": {
-        "url": "https://images.pexels.com/photos/31002098/pexels-photo-31002098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        "description": "Neon-lit interior of a futuristic ramen restaurant in Tokyo. Use for the customer landing page hero or admin dashboard banner."
+      "abstract_accent": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/39b9118e-ff39-4415-a661-464b2b17a5fd/images/f35e1cb333859c863cfd0b6b719d8033e9fea7f2bf2ad3bc05de1e90f0be51bf.png",
+        "description": "Translucent glass cubes and neon accents for subtle page backgrounds or banners."
       },
-      "food_item_1": {
-        "url": "https://images.pexels.com/photos/12325009/pexels-photo-12325009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        "description": "Close-up of a gourmet burger on a dark slate surface. Use for menu item cards."
+      "food_sample": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/39b9118e-ff39-4415-a661-464b2b17a5fd/images/2f1fafd1a94a9651a41ae8affb951f734887372112cd76c586b89a1d5ce76808.png",
+        "description": "Futuristic high-contrast burger image for menu placeholder or promotional spotlight."
       },
-      "food_item_2": {
-        "url": "https://images.pexels.com/photos/12325094/pexels-photo-12325094.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        "description": "Alternate gourmet burger on slate. Use for menu item variations."
+      "cafe_interior": {
+        "url": "https://images.pexels.com/photos/8535635/pexels-photo-8535635.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Bright modern café interior with white tiles for about section or restaurant listings."
+      },
+      "logo_sample": {
+        "url": "https://images.pexels.com/photos/19969806/pexels-photo-19969806.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Minimalist logo placeholder for restaurants."
       }
     }
   },
+  "testing": {
+    "attributes": "All interactive elements MUST include a descriptive data-testid attribute (e.g., data-testid='add-to-cart-btn', data-testid='order-status-card', data-testid='accept-order-btn')."
+  },
   "instructions_to_main_agent": [
-    "Install Google Fonts 'Unbounded' (Headings) and 'Outfit' (Body) in index.html or global css.",
-    "Strictly follow the dark mode ONLY implementation. Remove any light mode toggles.",
-    "Ensure all Shadcn components are styled with the provided color variables (e.g., bg-[#0A0A0A] for cards).",
-    "Use lucide-react for icons, but set strokeWidth to 1.5 for a sleeker, modern look.",
-    "Implement the customer side as a mobile-first UI (max-w-md mx-auto if viewed on desktop, or responsive grid).",
-    "Implement the admin side utilizing the full viewport with a dense 'Control Room' bento grid.",
-    "Include data-testid on every clickable or important data element."
+    "Strictly follow the 'Vibrant High-Contrast Light' aesthetic. NO dark mode.",
+    "Do NOT use pure #000000 or #808080. Use tinted #0A0A0A for blacks and primary text.",
+    "Buttons and cards should lean toward sharp edges (rounded-none or rounded-sm) with strong black borders or typography. Avoid default soft Shadcn radii.",
+    "Implement the 'Tetris' Grid for the marketing/landing page, mixing large images with typography blocks. Leave negative space.",
+    "Implement the 'Control Room' Grid for the Admin Dashboard (dense, gap-4 to gap-6, 1px borders, white backgrounds).",
+    "Use Shadcn UI for forms, inputs, tables, and dialogs, but strip out the soft Vercel shadows. Replace them with crisp 1px borders and high-contrast hover states. Do NOT use HTML select/date.",
+    "For the mobile menu view: prioritize mobile-first layout. Use bottom navigation, large swipeable category tabs, and highly visible 'Add to cart' buttons with neon accents.",
+    "Ensure generous spacing: Containers with borders must have p-6 or p-8 padding. Use p-12 or p-16 for major sections.",
+    "Never use placeholder URLs (via.placeholder.com). Use ONLY the provided media image URLs from this JSON.",
+    "Apply backdrop-blur-xl and bg-white/80 to sticky headers and mobile bottom navbars to create 'Crystal Glass'.",
+    "Add 'data-testid' to every interactive element (buttons, links, form inputs) to ensure robust testing."
   ]
 }
