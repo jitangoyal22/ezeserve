@@ -47,38 +47,41 @@ const AdminLogin = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4"
+      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
       style={{
-        backgroundColor: '#FAFAFA',
-        fontFamily: 'Manrope, sans-serif'
+        background: '#050505',
+        fontFamily: 'Outfit, sans-serif'
       }}
     >
+      <div className="absolute inset-0 opacity-10" style={{ 
+        backgroundImage: 'radial-gradient(circle at 20% 30%, #00FF66 0%, transparent 50%), radial-gradient(circle at 80% 70%, #00E5FF 0%, transparent 50%)',
+        filter: 'blur(100px)'
+      }}></div>
       <div
-        className="w-full max-w-md rounded-2xl p-8"
+        className="w-full max-w-md rounded-sm p-8 relative z-10"
         style={{
-          backgroundColor: '#FFFFFF',
-          border: '1px solid #E4E4E7',
-          boxShadow: '0 8px 30px rgba(0,0,0,0.04)'
+          backgroundColor: '#0A0A0A',
+          border: '1px solid rgba(255, 255, 255, 0.1)'
         }}
       >
         <h1
-          className="text-3xl sm:text-4xl text-center mb-2 tracking-tight"
+          className="text-3xl sm:text-4xl text-center mb-2 tracking-tight neon-text"
           style={{
-            fontFamily: 'Cabinet Grotesk, sans-serif',
-            color: '#1A1A1A',
-            fontWeight: '700'
+            fontFamily: 'Unbounded, sans-serif',
+            color: '#00FF66',
+            fontWeight: '800'
           }}
         >
-          Restaurant Admin
+          RESTAURANT ADMIN
         </h1>
-        <p className="text-center text-sm mb-8" style={{ color: '#52525B' }}>
-          {isLogin ? 'Login to manage your restaurants' : 'Create your admin account'}
+        <p className="text-center text-xs mb-8 uppercase tracking-wider" style={{ color: '#A1A1AA' }}>
+          {isLogin ? 'Secure Access Portal' : 'Initialize New Admin Account'}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: '#52525B' }}>
+              <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: '#00FF66' }}>
                 Name
               </label>
               <Input
@@ -87,13 +90,17 @@ const AdminLogin = () => {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required={!isLogin}
-                className="rounded-xl"
-                style={{ borderColor: '#E4E4E7' }}
+                className="rounded-sm"
+                style={{ 
+                  backgroundColor: '#111111', 
+                  borderColor: 'rgba(255, 255, 255, 0.1)',
+                  color: '#F4F4F5'
+                }}
               />
             </div>
           )}
           <div>
-            <label className="block text-sm font-medium mb-2" style={{ color: '#52525B' }}>
+            <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: '#00FF66' }}>
               Email
             </label>
             <Input
@@ -102,12 +109,16 @@ const AdminLogin = () => {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
-              className="rounded-xl"
-              style={{ borderColor: '#E4E4E7' }}
+              className="rounded-sm"
+              style={{ 
+                backgroundColor: '#111111', 
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                color: '#F4F4F5'
+              }}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2" style={{ color: '#52525B' }}>
+            <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: '#00FF66' }}>
               Password
             </label>
             <Input
@@ -116,8 +127,12 @@ const AdminLogin = () => {
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
-              className="rounded-xl"
-              style={{ borderColor: '#E4E4E7' }}
+              className="rounded-sm"
+              style={{ 
+                backgroundColor: '#111111', 
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                color: '#F4F4F5'
+              }}
             />
           </div>
 
@@ -125,14 +140,13 @@ const AdminLogin = () => {
             data-testid="admin-submit-btn"
             type="submit"
             disabled={loading}
-            className="w-full rounded-full py-6 text-base font-semibold transition-all duration-200 active:scale-98"
+            className="w-full rounded-sm py-6 text-sm font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 neon-glow"
             style={{
-              backgroundColor: '#E25E3E',
-              color: '#FFFFFF',
-              boxShadow: '0 20px 40px rgba(226,94,62,0.15)'
+              backgroundColor: '#00FF66',
+              color: '#050505'
             }}
           >
-            {loading ? 'Please wait...' : isLogin ? 'Login' : 'Register'}
+            {loading ? 'Processing...' : isLogin ? 'Access System' : 'Create Account'}
           </Button>
         </form>
 
@@ -140,10 +154,10 @@ const AdminLogin = () => {
           <button
             data-testid="toggle-auth-mode-btn"
             onClick={() => setIsLogin(!isLogin)}
-            className="text-sm transition-all duration-200"
-            style={{ color: '#E25E3E', fontWeight: '600' }}
+            className="text-xs transition-all duration-200 uppercase tracking-wider font-bold"
+            style={{ color: '#00E5FF' }}
           >
-            {isLogin ? "Don't have an account? Register" : 'Already have an account? Login'}
+            {isLogin ? 'Initialize New Account' : 'Return to Login'}
           </button>
         </div>
       </div>
