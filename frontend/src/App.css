@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 .hide-scrollbar {
   -ms-overflow-style: none;
@@ -12,45 +12,48 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'DM Sans', sans-serif;
-  background: #FFFFFF;
-  color: #0A0A0A;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%);
 }
 
-.neon-shadow {
-  box-shadow: 0 0 15px rgba(204, 255, 0, 0.5);
-}
-
-.sharp-shadow {
-  box-shadow: 4px 4px 0px #CCFF00;
-}
-
-.glass-light {
-  background: rgba(255, 255, 255, 0.8);
+.gradient-card {
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  box-shadow: 0 8px 32px rgba(103, 58, 183, 0.1);
 }
 
-.crisp-border {
-  border: 1px solid rgba(10, 10, 10, 0.1);
+.holographic {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.hover-neon:hover {
-  box-shadow: 0 0 20px rgba(204, 255, 0, 0.6), 4px 4px 0px #CCFF00;
-  border-color: #0A0A0A;
-  transform: translateY(-2px);
+.holographic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(204, 255, 0, 0.7);
-  }
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
 }
 
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
