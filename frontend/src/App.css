@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 .hide-scrollbar {
   -ms-overflow-style: none;
@@ -12,47 +12,42 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', sans-serif;
-  background: #050505;
-  color: #F4F4F5;
+  font-family: 'DM Sans', sans-serif;
+  background: #FFFFFF;
+  color: #0A0A0A;
 }
 
-.neon-glow {
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.3), 0 0 40px rgba(0, 255, 102, 0.1);
+.neon-shadow {
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.5);
 }
 
-.neon-text {
-  text-shadow: 0 0 10px rgba(0, 255, 102, 0.5), 0 0 20px rgba(0, 255, 102, 0.3);
+.sharp-shadow {
+  box-shadow: 4px 4px 0px #CCFF00;
 }
 
-.cyber-border {
-  position: relative;
-}
-
-.cyber-border::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid rgba(0, 255, 102, 0.3);
-  pointer-events: none;
-}
-
-.glass-effect {
-  background: rgba(0, 0, 0, 0.6);
+.glass-light {
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.crisp-border {
+  border: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.hover-neon:hover {
+  box-shadow: 0 0 20px rgba(204, 255, 0, 0.6), 4px 4px 0px #CCFF00;
+  border-color: #0A0A0A;
+  transform: translateY(-2px);
 }
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
   }
   50% {
-    box-shadow: 0 0 30px rgba(0, 255, 102, 0.6), 0 0 50px rgba(0, 255, 102, 0.3);
+    box-shadow: 0 0 25px rgba(204, 255, 0, 0.7);
   }
 }
 

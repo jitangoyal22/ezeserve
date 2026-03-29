@@ -97,53 +97,53 @@ const CustomerMenu = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#050505' }}>
-        <div className="text-lg neon-text" style={{ color: '#00FF66', fontFamily: 'Unbounded, sans-serif' }}>Loading menu...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#FFFFFF' }}>
+        <div className="text-lg font-bold" style={{ color: '#0A0A0A', fontFamily: 'Outfit, sans-serif' }}>LOADING MENU...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#050505', fontFamily: 'Outfit, sans-serif' }}>
-      <div className="sticky top-0 z-50 glass-effect" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-        <div className="p-4 sm:p-6">
-          <h1 className="text-2xl sm:text-3xl tracking-tight neon-text" style={{ fontFamily: 'Unbounded, sans-serif', color: '#00FF66', fontWeight: '800' }}>
+    <div className="min-h-screen" style={{ background: '#F4F5F7', fontFamily: 'DM Sans, sans-serif' }}>
+      <div className="sticky top-0 z-50 glass-light">
+        <div className="p-6">
+          <h1 className="text-3xl sm:text-4xl tracking-tighter font-black" style={{ fontFamily: 'Outfit, sans-serif', color: '#0A0A0A' }}>
             {restaurant?.name}
           </h1>
           {restaurant?.location && (
-            <p className="text-sm mt-1" style={{ color: '#A1A1AA' }}>{restaurant.location}</p>
+            <p className="text-sm mt-1 font-medium" style={{ color: '#4A4D54' }}>{restaurant.location}</p>
           )}
           <div className="mt-4 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#00FF66' }} size={20} strokeWidth={1.5} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#CCFF00' }} size={20} strokeWidth={2} />
             <Input
               data-testid="menu-search-input"
               type="text"
               placeholder="Search menu..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 rounded-sm border transition-all duration-200"
+              className="pl-10 rounded-none border-2 transition-all duration-200 font-medium"
               style={{ 
-                backgroundColor: '#111111', 
-                borderColor: 'rgba(255, 255, 255, 0.1)',
-                color: '#F4F4F5'
+                backgroundColor: '#FFFFFF', 
+                borderColor: 'rgba(10, 10, 10, 0.1)',
+                color: '#0A0A0A'
               }}
             />
           </div>
         </div>
         
         {categories.length > 0 && (
-          <div className="overflow-x-auto hide-scrollbar px-4 pb-3">
-            <div className="flex gap-2">
+          <div className="overflow-x-auto hide-scrollbar px-6 pb-4">
+            <div className="flex gap-3">
               {categories.map(cat => (
                 <button
                   key={cat.id}
                   data-testid={`category-pill-${cat.name.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={() => setActiveCategory(cat.id)}
-                  className="px-4 py-2 rounded-sm whitespace-nowrap text-xs uppercase tracking-wider transition-all duration-200 font-bold"
+                  className="px-6 py-3 rounded-none whitespace-nowrap text-xs uppercase tracking-widest transition-all duration-200 font-bold border-2"
                   style={{
-                    backgroundColor: activeCategory === cat.id ? '#00FF66' : '#1A1A1A',
-                    color: activeCategory === cat.id ? '#050505' : '#A1A1AA',
-                    border: activeCategory === cat.id ? '1px solid #00FF66' : '1px solid rgba(255, 255, 255, 0.1)'
+                    backgroundColor: activeCategory === cat.id ? '#0A0A0A' : '#FFFFFF',
+                    color: activeCategory === cat.id ? '#FFFFFF' : '#0A0A0A',
+                    borderColor: '#0A0A0A'
                   }}
                 >
                   {cat.name}
@@ -154,16 +154,15 @@ const CustomerMenu = () => {
         )}
       </div>
 
-      <div className="p-4 sm:p-6 pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
+      <div className="p-6 pb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {filteredItems.map(item => (
             <div
               key={item.id}
               data-testid={`menu-item-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-              className="rounded-sm overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:border-[#00FF66]/50"
+              className="rounded-none overflow-hidden transition-all duration-200 hover-neon crisp-border"
               style={{
-                backgroundColor: '#0A0A0A',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+                backgroundColor: '#FFFFFF'
               }}
             >
               {item.image_path && (
@@ -173,23 +172,23 @@ const CustomerMenu = () => {
                     alt={item.name}
                     className="w-full h-48 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                  <div className="absolute top-2 right-2 px-3 py-1 text-xs font-bold uppercase tracking-widest" style={{ backgroundColor: '#CCFF00', color: '#0A0A0A' }}>NEW</div>
                 </div>
               )}
-              <div className="p-4">
-                <h3 className="text-lg font-semibold tracking-tight" style={{ color: '#F4F4F5', fontFamily: 'Unbounded, sans-serif' }}>{item.name}</h3>
+              <div className="p-6">
+                <h3 className="text-lg font-bold tracking-tight" style={{ color: '#0A0A0A', fontFamily: 'Outfit, sans-serif' }}>{item.name}</h3>
                 {item.description && (
-                  <p className="text-sm mt-1" style={{ color: '#A1A1AA' }}>{item.description}</p>
+                  <p className="text-sm mt-2 font-medium" style={{ color: '#4A4D54' }}>{item.description}</p>
                 )}
                 <div className="flex items-center justify-between mt-4">
-                  <span className="text-xl font-bold neon-text" style={{ color: '#00FF66', fontFamily: 'Unbounded, sans-serif' }}>₹{item.price}</span>
+                  <span className="text-2xl font-black" style={{ color: '#0033FF', fontFamily: 'Outfit, sans-serif' }}>₹{item.price}</span>
                   <Button
                     data-testid={`add-to-cart-btn-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                     onClick={() => addToCart(item)}
-                    className="rounded-sm transition-all duration-200 active:scale-95 font-bold text-xs uppercase tracking-wider"
-                    style={{ backgroundColor: '#00FF66', color: '#050505' }}
+                    className="rounded-none transition-all duration-200 active:scale-95 font-bold text-xs uppercase tracking-widest px-6 py-3 border-2"
+                    style={{ backgroundColor: '#0A0A0A', color: '#FFFFFF', borderColor: '#0A0A0A' }}
                   >
-                    Add to Cart
+                    ADD TO CART
                   </Button>
                 </div>
               </div>
@@ -198,25 +197,26 @@ const CustomerMenu = () => {
         </div>
         {filteredItems.length === 0 && (
           <div className="text-center py-12">
-            <p style={{ color: '#A1A1AA' }}>No items found</p>
+            <p className="font-bold uppercase tracking-widest text-sm" style={{ color: '#8A8D96' }}>NO ITEMS FOUND</p>
           </div>
         )}
       </div>
 
       {cart.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 p-4 z-50 glass-effect" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+        <div className="fixed bottom-0 left-0 right-0 p-6 z-50 glass-light">
           <div className="max-w-7xl mx-auto">
             <Button
               data-testid="view-cart-btn"
               onClick={() => navigate(`/cart/${restaurantId}`)}
-              className="w-full rounded-sm py-6 text-sm font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 neon-glow"
+              className="w-full rounded-none py-6 text-sm font-bold uppercase tracking-widest transition-all duration-200 active:scale-95 pulse-glow border-2"
               style={{
-                backgroundColor: '#00FF66',
-                color: '#050505'
+                backgroundColor: '#CCFF00',
+                color: '#0A0A0A',
+                borderColor: '#0A0A0A'
               }}
             >
-              <ShoppingCart size={20} className="mr-2" strokeWidth={1.5} />
-              View Cart ({cartItemCount} items) • ₹{cartTotal.toFixed(2)}
+              <ShoppingCart size={20} className="mr-3" strokeWidth={2} />
+              VIEW CART ({cartItemCount} ITEMS) • ₹{cartTotal.toFixed(2)}
             </Button>
           </div>
         </div>

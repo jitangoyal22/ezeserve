@@ -49,40 +49,42 @@ const AdminLogin = () => {
     <div
       className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
       style={{
-        background: '#050505',
-        fontFamily: 'Outfit, sans-serif'
+        background: 'linear-gradient(135deg, #FFFFFF 0%, #F4F5F7 100%)',
+        fontFamily: 'DM Sans, sans-serif'
       }}
     >
-      <div className="absolute inset-0 opacity-10" style={{ 
-        backgroundImage: 'radial-gradient(circle at 20% 30%, #00FF66 0%, transparent 50%), radial-gradient(circle at 80% 70%, #00E5FF 0%, transparent 50%)',
-        filter: 'blur(100px)'
+      <div className="absolute inset-0 opacity-5" style={{ 
+        backgroundImage: 'repeating-linear-gradient(45deg, #0A0A0A 0px, #0A0A0A 2px, transparent 2px, transparent 10px)',
       }}></div>
       <div
-        className="w-full max-w-md rounded-sm p-8 relative z-10"
+        className="w-full max-w-md rounded-none p-8 relative z-10 crisp-border"
         style={{
-          backgroundColor: '#0A0A0A',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
+          backgroundColor: '#FFFFFF',
+          boxShadow: '8px 8px 0px #CCFF00'
         }}
       >
-        <h1
-          className="text-3xl sm:text-4xl text-center mb-2 tracking-tight neon-text"
-          style={{
-            fontFamily: 'Unbounded, sans-serif',
-            color: '#00FF66',
-            fontWeight: '800'
-          }}
-        >
-          RESTAURANT ADMIN
-        </h1>
-        <p className="text-center text-xs mb-8 uppercase tracking-wider" style={{ color: '#A1A1AA' }}>
-          {isLogin ? 'Secure Access Portal' : 'Initialize New Admin Account'}
-        </p>
+        <div className="mb-8 text-center">
+          <div className="inline-block px-4 py-2 mb-4" style={{ backgroundColor: '#CCFF00', border: '2px solid #0A0A0A' }}>
+            <h1
+              className="text-3xl sm:text-4xl tracking-tighter font-black"
+              style={{
+                fontFamily: 'Outfit, sans-serif',
+                color: '#0A0A0A'
+              }}
+            >
+              ADMIN PORTAL
+            </h1>
+          </div>
+          <p className="text-xs uppercase tracking-widest font-bold" style={{ color: '#4A4D54' }}>
+            {isLogin ? 'SECURE ACCESS' : 'CREATE NEW ACCOUNT'}
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <div>
-              <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: '#00FF66' }}>
-                Name
+              <label className="block text-xs font-bold mb-2 uppercase tracking-widest" style={{ color: '#0A0A0A' }}>
+                NAME
               </label>
               <Input
                 data-testid="admin-name-input"
@@ -90,18 +92,18 @@ const AdminLogin = () => {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required={!isLogin}
-                className="rounded-sm"
+                className="rounded-none border-2 font-medium"
                 style={{ 
-                  backgroundColor: '#111111', 
-                  borderColor: 'rgba(255, 255, 255, 0.1)',
-                  color: '#F4F4F5'
+                  backgroundColor: '#FFFFFF', 
+                  borderColor: 'rgba(10, 10, 10, 0.2)',
+                  color: '#0A0A0A'
                 }}
               />
             </div>
           )}
           <div>
-            <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: '#00FF66' }}>
-              Email
+            <label className="block text-xs font-bold mb-2 uppercase tracking-widest" style={{ color: '#0A0A0A' }}>
+              EMAIL
             </label>
             <Input
               data-testid="admin-email-input"
@@ -109,17 +111,17 @@ const AdminLogin = () => {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
-              className="rounded-sm"
+              className="rounded-none border-2 font-medium"
               style={{ 
-                backgroundColor: '#111111', 
-                borderColor: 'rgba(255, 255, 255, 0.1)',
-                color: '#F4F4F5'
+                backgroundColor: '#FFFFFF', 
+                borderColor: 'rgba(10, 10, 10, 0.2)',
+                color: '#0A0A0A'
               }}
             />
           </div>
           <div>
-            <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: '#00FF66' }}>
-              Password
+            <label className="block text-xs font-bold mb-2 uppercase tracking-widest" style={{ color: '#0A0A0A' }}>
+              PASSWORD
             </label>
             <Input
               data-testid="admin-password-input"
@@ -127,11 +129,11 @@ const AdminLogin = () => {
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
-              className="rounded-sm"
+              className="rounded-none border-2 font-medium"
               style={{ 
-                backgroundColor: '#111111', 
-                borderColor: 'rgba(255, 255, 255, 0.1)',
-                color: '#F4F4F5'
+                backgroundColor: '#FFFFFF', 
+                borderColor: 'rgba(10, 10, 10, 0.2)',
+                color: '#0A0A0A'
               }}
             />
           </div>
@@ -140,13 +142,14 @@ const AdminLogin = () => {
             data-testid="admin-submit-btn"
             type="submit"
             disabled={loading}
-            className="w-full rounded-sm py-6 text-sm font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 neon-glow"
+            className="w-full rounded-none py-6 text-sm font-bold uppercase tracking-widest transition-all duration-200 active:scale-95 border-2"
             style={{
-              backgroundColor: '#00FF66',
-              color: '#050505'
+              backgroundColor: '#0A0A0A',
+              color: '#FFFFFF',
+              borderColor: '#0A0A0A'
             }}
           >
-            {loading ? 'Processing...' : isLogin ? 'Access System' : 'Create Account'}
+            {loading ? 'PROCESSING...' : isLogin ? 'ACCESS SYSTEM' : 'CREATE ACCOUNT'}
           </Button>
         </form>
 
@@ -154,10 +157,10 @@ const AdminLogin = () => {
           <button
             data-testid="toggle-auth-mode-btn"
             onClick={() => setIsLogin(!isLogin)}
-            className="text-xs transition-all duration-200 uppercase tracking-wider font-bold"
-            style={{ color: '#00E5FF' }}
+            className="text-xs transition-all duration-200 uppercase tracking-widest font-bold hover:underline"
+            style={{ color: '#0033FF' }}
           >
-            {isLogin ? 'Initialize New Account' : 'Return to Login'}
+            {isLogin ? 'CREATE NEW ACCOUNT' : 'BACK TO LOGIN'}
           </button>
         </div>
       </div>

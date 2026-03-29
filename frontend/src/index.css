@@ -2,43 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 body {
     margin: 0;
-    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #050505;
-    color: #F4F4F5;
+    background: #FFFFFF;
+    color: #0A0A0A;
 }
 
 code {
-    font-family: 'Outfit', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 @layer base {
     :root {
-        --background: 5 5% 2%;
-        --foreground: 0 0% 96%;
-        --card: 0 0% 4%;
-        --card-foreground: 0 0% 96%;
-        --popover: 0 0% 4%;
-        --popover-foreground: 0 0% 96%;
-        --primary: 142 100% 50%;
-        --primary-foreground: 5 5% 2%;
-        --secondary: 0 0% 7%;
-        --secondary-foreground: 0 0% 96%;
-        --muted: 0 0% 10%;
-        --muted-foreground: 0 0% 63%;
-        --accent: 186 100% 50%;
-        --accent-foreground: 5 5% 2%;
-        --destructive: 330 100% 50%;
-        --destructive-foreground: 0 0% 96%;
-        --border: 0 0% 100% / 0.1;
-        --input: 0 0% 100% / 0.1;
-        --ring: 142 100% 50%;
-        --radius: 0.25rem;
+        --background: 0 0% 100%;
+        --foreground: 0 0% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 4%;
+        --primary: 0 0% 4%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 11% 96%;
+        --secondary-foreground: 0 0% 4%;
+        --muted: 210 11% 89%;
+        --muted-foreground: 0 0% 54%;
+        --accent: 72 100% 50%;
+        --accent-foreground: 0 0% 4%;
+        --destructive: 344 100% 50%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 4% / 0.1;
+        --input: 0 0% 4% / 0.1;
+        --ring: 72 100% 50%;
+        --radius: 0.125rem;
     }
 }
 
