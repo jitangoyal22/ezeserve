@@ -1,133 +1,107 @@
 {
-  "theme": "Light",
-  "archetype": "1 (Organic & Earthy)",
-  "emotional_tone": "Warm, fresh, efficient, appetizing, clean.",
-  "typography": {
-    "heading_font": "Cabinet Grotesk",
-    "body_font": "Manrope",
-    "hierarchy": {
-      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight",
-      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight",
-      "h3": "text-xl sm:text-2xl",
-      "h4": "text-lg sm:text-xl",
-      "body": "text-base sm:text-sm leading-relaxed",
-      "small": "text-sm text-zinc-500",
-      "overline": "text-xs tracking-[0.2em] uppercase"
-    }
-  },
+  "theme": "dark",
+  "archetype": "7 (Electric & Neon - Cyber-Chic Variant)",
+  "design_philosophy": "A cutting-edge, futuristic approach combining high-contrast neon accents with deep void blacks. The design feels like a premium cyberpunk or Neo-Tokyo interface rather than a generic SaaS app. Prioritizes 'Optical Clarity' with crystal glassmorphism for floating elements and rigid, glowing borders for the admin dashboard.",
   "colors": {
-    "background": {
-      "primary": "#FAFAFA",
-      "secondary": "#F4F4F5"
-    },
-    "surface": {
-      "card": "#FFFFFF",
-      "glass": "bg-white/70 backdrop-blur-xl border border-white/40"
-    },
-    "primary": {
-      "DEFAULT": "#E25E3E",
-      "hover": "#C63D2F",
-      "foreground": "#FFFFFF"
-    },
-    "status": {
-      "success": "#4F6F52",
-      "warning": "#EAB308",
-      "error": "#EF4444",
-      "info": "#3B82F6"
-    },
-    "text": {
-      "primary": "#1A1A1A",
-      "secondary": "#52525B",
-      "tertiary": "#A1A1AA"
-    },
-    "border": "#E4E4E7"
+    "background": "#050505",
+    "foreground": "#F4F4F5",
+    "card": "#0A0A0A",
+    "card_foreground": "#F4F4F5",
+    "popover": "#0A0A0A",
+    "popover_foreground": "#F4F4F5",
+    "primary": "#00FF66",
+    "primary_foreground": "#050505",
+    "secondary": "#111111",
+    "secondary_foreground": "#F4F4F5",
+    "muted": "#1A1A1A",
+    "muted_foreground": "#A1A1AA",
+    "accent": "#00E5FF",
+    "accent_foreground": "#050505",
+    "destructive": "#FF007F",
+    "destructive_foreground": "#F4F4F5",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "input": "rgba(255, 255, 255, 0.1)",
+    "ring": "#00FF66"
   },
-  "layout_spacing": {
-    "global_padding": "p-4 sm:p-6 lg:p-8",
-    "container": "max-w-7xl mx-auto",
-    "grid_customer": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
-    "grid_admin": "grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6",
-    "card_padding": "p-6",
-    "radius": {
-      "sm": "rounded-md",
-      "md": "rounded-xl",
-      "lg": "rounded-2xl",
-      "full": "rounded-full"
+  "typography": {
+    "heading_font": "Unbounded",
+    "body_font": "Outfit",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-bold",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold",
+      "h3": "text-xl sm:text-2xl tracking-tight font-medium",
+      "h4": "text-lg sm:text-xl tracking-tight font-medium",
+      "body": "text-base leading-relaxed text-muted-foreground",
+      "small": "text-sm text-muted-foreground",
+      "overline": "text-xs tracking-[0.2em] uppercase font-bold text-primary"
     },
-    "shadows": {
-      "card": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
-      "floating": "shadow-[0_20px_40px_rgb(226,94,62,0.15)]"
+    "instruction": "Avoid 'Inter' for headings. Use Unbounded for a futuristic/technical vibe. Use Outfit for readable, geometric body text."
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous spacing. Use p-6, p-8, p-12 for containers.",
+    "admin_dashboard": {
+      "strategy": "The 'Control Room' Grid",
+      "grid_classes": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 or gap-6",
+      "rules": [
+        "Every pixel utilized, h-full on children.",
+        "Use rigid 1px borders (border-white/10) to separate data.",
+        "Real-time order feed uses col-span-1 row-span-2."
+      ]
+    },
+    "customer_mobile": {
+      "strategy": "Mobile-First immersive experience",
+      "grid_classes": "flex flex-col gap-4",
+      "rules": [
+        "Product images must not exceed 60vh.",
+        "Use crystal glassmorphism for floating bottom navigation and sticky headers."
+      ]
     }
+  },
+  "surface_styles": {
+    "cards": "Flat background (bg-[#0A0A0A]), 1px border (border-white/10), no shadow. Hover: border-[#00FF66]/50 and -translate-y-1 transition.",
+    "glassmorphism": "Crystal Glass variant for sticky headers/FABs: bg-black/60, backdrop-blur-xl, border-b border-white/10. Must have 1px inner stroke.",
+    "neon_borders": "For active/new orders in the admin panel, use a glowing border effect or a neon left border (border-l-4 border-l-primary)."
   },
   "components": {
-    "customer_menu": {
-      "cards": "Flat background #FFFFFF, no border on mobile, slight 1px border on desktop. Image on top (or left for list view), rounded-xl.",
-      "navigation": "Sticky top category pills (glassmorphism if overlapping content), hiding scrollbar.",
-      "cart_fab": "Floating action button, bottom center/right, using Primary color, heavy shadow, rounded-full.",
-      "images": "max-h-[80vh] md:max-h-none. For item images, aspect-square or 4:3 object-cover."
-    },
-    "admin_dashboard": {
-      "sidebar": "Fixed left, #FFFFFF background, border-r #E4E4E7. Links hover to light gray (#F4F4F5) with primary accent color text.",
-      "widgets": "Flat cards, 1px border (#E4E4E7), no heavy shadow. Value in text-3xl font-bold.",
-      "order_board": "Kanban-style columns (New, Preparing, Ready) or a dense data table. Status badges pill-shaped (rounded-full).",
-      "forms": "Shadcn UI Form, Input, Select. Minimal borders, focus:ring-2 focus:ring-[#E25E3E]."
-    }
+    "buttons": "Sharp edges (rounded-none or max rounded-sm). Primary buttons use bg-primary text-black hover:brightness-110. Accent buttons use bg-accent text-black.",
+    "inputs": "Shadcn defaults customized to bg-[#111111] border-white/10 focus:border-primary focus:ring-1 focus:ring-primary.",
+    "dialogs": "Dark glass overlays (bg-black/80 backdrop-blur-sm). Modal body uses bg-[#0A0A0A] border border-white/10."
   },
-  "motion": {
-    "hover": "transition-all duration-200 ease-in-out",
-    "card_hover": "-translate-y-1 shadow-[0_8px_30px_rgb(0,0,0,0.08)]",
-    "button_active": "scale-[0.98]",
-    "list_entrance": "Staggered fade-up for menu items."
+  "animation_and_motion": {
+    "hover_states": "All interactives must explicitly set hover text/bg colors to maintain contrast. Buttons should have slight scale (active:scale-95).",
+    "page_transitions": "Use Framer Motion for subtle fade-in and slide-up (y: 20, opacity: 0 -> y: 0, opacity: 1) on lists/menus."
   },
-  "icons": {
-    "library": "lucide-react",
-    "style": "Clean, line-based, 2px stroke width."
+  "accessibility_and_testing": {
+    "testing_attributes": "All interactive elements MUST include data-testid attribute (e.g., data-testid='order-submit-button').",
+    "contrast": "Text over images must use bg-black/50 overlay. Ensure neon primary (#00FF66) is legible against dark backgrounds."
   },
-  "testing": {
-    "rules": "All interactive and key informational elements MUST include a data-testid attribute."
-  },
-  "image_urls": {
-    "hero_background": {
-      "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
-      "description": "Warm restaurant interior for admin login background or landing page."
-    },
-    "logo_placeholder": {
-      "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop",
-      "description": "Clean restaurant sign logo placeholder."
-    },
-    "food_items": [
-      {
-        "category": "Burger",
-        "url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1999&auto=format&fit=crop",
-        "description": "Gourmet burger"
+  "media_assets": {
+    "images": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1764303017897-16f5009d2bb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMG5lb24lMjBncmVlbiUyMHRlY2glMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NDgwOTY4MXww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract glowing green rectangles on a dark background. Use for auth screens or global backgrounds with high opacity overlay."
       },
-      {
-        "category": "Pizza",
-        "url": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop",
-        "description": "Wood-fired pizza"
+      "restaurant_interior": {
+        "url": "https://images.pexels.com/photos/31002098/pexels-photo-31002098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Neon-lit interior of a futuristic ramen restaurant in Tokyo. Use for the customer landing page hero or admin dashboard banner."
       },
-      {
-        "category": "Salad",
-        "url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070&auto=format&fit=crop",
-        "description": "Healthy bowl salad"
+      "food_item_1": {
+        "url": "https://images.pexels.com/photos/12325009/pexels-photo-12325009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Close-up of a gourmet burger on a dark slate surface. Use for menu item cards."
       },
-      {
-        "category": "Drink",
-        "url": "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop",
-        "description": "Coffee or cold beverage"
+      "food_item_2": {
+        "url": "https://images.pexels.com/photos/12325094/pexels-photo-12325094.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Alternate gourmet burger on slate. Use for menu item variations."
       }
-    ],
-    "empty_state": {
-      "url": "https://images.unsplash.com/photo-1610636846153-2bd1469e35b7?q=80&w=2070&auto=format&fit=crop",
-      "description": "Clean minimal plate/table layout representing empty cart."
     }
   },
   "instructions_to_main_agent": [
-    "Ensure the layout is highly responsive. The customer side must feel like a native mobile app with sticky bottom/top bars and large touch targets.",
-    "For the admin side, use Shadcn UI tables and cards to ensure high density and clarity for operations.",
-    "Apply 'font-cabinet-grotesk' or similar custom sans to headings and 'font-manrope' to body text.",
-    "Use '#E25E3E' for primary calls-to-action to stimulate appetite and create a warm vibe.",
-    "Implement 'data-testid' on all interactive elements (buttons, inputs, links).",
-    "Use the provided image URLs as actual image sources, do not use placeholder domains."
+    "Install Google Fonts 'Unbounded' (Headings) and 'Outfit' (Body) in index.html or global css.",
+    "Strictly follow the dark mode ONLY implementation. Remove any light mode toggles.",
+    "Ensure all Shadcn components are styled with the provided color variables (e.g., bg-[#0A0A0A] for cards).",
+    "Use lucide-react for icons, but set strokeWidth to 1.5 for a sleeker, modern look.",
+    "Implement the customer side as a mobile-first UI (max-w-md mx-auto if viewed on desktop, or responsive grid).",
+    "Implement the admin side utilizing the full viewport with a dense 'Control Room' bento grid.",
+    "Include data-testid on every clickable or important data element."
   ]
 }
