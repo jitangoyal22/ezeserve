@@ -1,0 +1,133 @@
+{
+  "theme": "Light",
+  "archetype": "1 (Organic & Earthy)",
+  "emotional_tone": "Warm, fresh, efficient, appetizing, clean.",
+  "typography": {
+    "heading_font": "Cabinet Grotesk",
+    "body_font": "Manrope",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight",
+      "h3": "text-xl sm:text-2xl",
+      "h4": "text-lg sm:text-xl",
+      "body": "text-base sm:text-sm leading-relaxed",
+      "small": "text-sm text-zinc-500",
+      "overline": "text-xs tracking-[0.2em] uppercase"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#FAFAFA",
+      "secondary": "#F4F4F5"
+    },
+    "surface": {
+      "card": "#FFFFFF",
+      "glass": "bg-white/70 backdrop-blur-xl border border-white/40"
+    },
+    "primary": {
+      "DEFAULT": "#E25E3E",
+      "hover": "#C63D2F",
+      "foreground": "#FFFFFF"
+    },
+    "status": {
+      "success": "#4F6F52",
+      "warning": "#EAB308",
+      "error": "#EF4444",
+      "info": "#3B82F6"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "secondary": "#52525B",
+      "tertiary": "#A1A1AA"
+    },
+    "border": "#E4E4E7"
+  },
+  "layout_spacing": {
+    "global_padding": "p-4 sm:p-6 lg:p-8",
+    "container": "max-w-7xl mx-auto",
+    "grid_customer": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+    "grid_admin": "grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6",
+    "card_padding": "p-6",
+    "radius": {
+      "sm": "rounded-md",
+      "md": "rounded-xl",
+      "lg": "rounded-2xl",
+      "full": "rounded-full"
+    },
+    "shadows": {
+      "card": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "floating": "shadow-[0_20px_40px_rgb(226,94,62,0.15)]"
+    }
+  },
+  "components": {
+    "customer_menu": {
+      "cards": "Flat background #FFFFFF, no border on mobile, slight 1px border on desktop. Image on top (or left for list view), rounded-xl.",
+      "navigation": "Sticky top category pills (glassmorphism if overlapping content), hiding scrollbar.",
+      "cart_fab": "Floating action button, bottom center/right, using Primary color, heavy shadow, rounded-full.",
+      "images": "max-h-[80vh] md:max-h-none. For item images, aspect-square or 4:3 object-cover."
+    },
+    "admin_dashboard": {
+      "sidebar": "Fixed left, #FFFFFF background, border-r #E4E4E7. Links hover to light gray (#F4F4F5) with primary accent color text.",
+      "widgets": "Flat cards, 1px border (#E4E4E7), no heavy shadow. Value in text-3xl font-bold.",
+      "order_board": "Kanban-style columns (New, Preparing, Ready) or a dense data table. Status badges pill-shaped (rounded-full).",
+      "forms": "Shadcn UI Form, Input, Select. Minimal borders, focus:ring-2 focus:ring-[#E25E3E]."
+    }
+  },
+  "motion": {
+    "hover": "transition-all duration-200 ease-in-out",
+    "card_hover": "-translate-y-1 shadow-[0_8px_30px_rgb(0,0,0,0.08)]",
+    "button_active": "scale-[0.98]",
+    "list_entrance": "Staggered fade-up for menu items."
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Clean, line-based, 2px stroke width."
+  },
+  "testing": {
+    "rules": "All interactive and key informational elements MUST include a data-testid attribute."
+  },
+  "image_urls": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
+      "description": "Warm restaurant interior for admin login background or landing page."
+    },
+    "logo_placeholder": {
+      "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop",
+      "description": "Clean restaurant sign logo placeholder."
+    },
+    "food_items": [
+      {
+        "category": "Burger",
+        "url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1999&auto=format&fit=crop",
+        "description": "Gourmet burger"
+      },
+      {
+        "category": "Pizza",
+        "url": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop",
+        "description": "Wood-fired pizza"
+      },
+      {
+        "category": "Salad",
+        "url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070&auto=format&fit=crop",
+        "description": "Healthy bowl salad"
+      },
+      {
+        "category": "Drink",
+        "url": "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop",
+        "description": "Coffee or cold beverage"
+      }
+    ],
+    "empty_state": {
+      "url": "https://images.unsplash.com/photo-1610636846153-2bd1469e35b7?q=80&w=2070&auto=format&fit=crop",
+      "description": "Clean minimal plate/table layout representing empty cart."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Ensure the layout is highly responsive. The customer side must feel like a native mobile app with sticky bottom/top bars and large touch targets.",
+    "For the admin side, use Shadcn UI tables and cards to ensure high density and clarity for operations.",
+    "Apply 'font-cabinet-grotesk' or similar custom sans to headings and 'font-manrope' to body text.",
+    "Use '#E25E3E' for primary calls-to-action to stimulate appetite and create a warm vibe.",
+    "Implement 'data-testid' on all interactive elements (buttons, inputs, links).",
+    "Use the provided image URLs as actual image sources, do not use placeholder domains."
+  ]
+}
