@@ -10,11 +10,13 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-import requests
 import qrcode
 from io import BytesIO
 import bcrypt
 import jwt
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -26,41 +28,15 @@ db = client[os.environ['DB_NAME']]
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
-STORAGE_URL = "https://integrations.emergentagent.com/objstore/api/v1/storage"
-EMERGENT_KEY = os.environ.get("EMERGENT_LLM_KEY")
-APP_NAME = "qr-restaurant"
-storage_key = None
+# Cloudinary Configuration
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", ""),
+    api_key=os.environ.get("CLOUDINARY_API_KEY", ""),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET", "")
+)
 
 JWT_SECRET = os.environ.get("JWT_SECRET", "your-secret-key-change-in-production")
 JWT_ALGORITHM = "HS256"
-
-def init_storage():
-    global storage_key
-    if storage_key:
-        return storage_key
-    resp = requests.post(f"{STORAGE_URL}/init", json={"emergent_key": EMERGENT_KEY}, timeout=30)
-    resp.raise_for_status()
-    storage_key = resp.json()["storage_key"]
-    return storage_key
-
-def put_object(path: str, data: bytes, content_type: str) -> dict:
-    key = init_storage()
-    resp = requests.put(
-        f"{STORAGE_URL}/objects/{path}",
-        headers={"X-Storage-Key": key, "Content-Type": content_type},
-        data=data, timeout=120
-    )
-    resp.raise_for_status()
-    return resp.json()
-
-def get_object(path: str) -> tuple:
-    key = init_storage()
-    resp = requests.get(
-        f"{STORAGE_URL}/objects/{path}",
-        headers={"X-Storage-Key": key}, timeout=60
-    )
-    resp.raise_for_status()
-    return resp.content, resp.headers.get("Content-Type", "application/octet-stream")
 
 class AdminUserCreate(BaseModel):
     email: str
@@ -366,25 +342,31 @@ async def upload_menu_item_image(item_id: str, file: UploadFile = File(...), use
     if not menu_item:
         raise HTTPException(status_code=404, detail="Menu item not found")
     
-    ext = file.filename.split(".")[-1] if "." in file.filename else "jpg"
-    path = f"{APP_NAME}/menu-items/{item_id}/{uuid.uuid4()}.{ext}"
-    data = await file.read()
-    result = put_object(path, data, file.content_type or "image/jpeg")
-    
-    await db.menu_items.update_one(
-        {"id": item_id},
-        {"$set": {"image_path": result["path"]}}
-    )
-    
-    return {"image_path": result["path"], "message": "Image uploaded successfully"}
+    try:
+        # Upload to Cloudinary
+        file_data = await file.read()
+        upload_result = cloudinary.uploader.upload(
+            file_data,
+            folder=f"ezeserve/menu-items/{item_id}",
+            resource_type="auto"
+        )
+        
+        image_url = upload_result.get("secure_url")
+        
+        await db.menu_items.update_one(
+            {"id": item_id},
+            {"$set": {"image_path": image_url}}
+        )
+        
+        return {"image_path": image_url, "message": "Image uploaded successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Image upload failed: {str(e)}")
 
 @api_router.get("/images/{path:path}")
 async def get_image(path: str):
-    try:
-        data, content_type = get_object(path)
-        return Response(content=data, media_type=content_type)
-    except Exception:
-        raise HTTPException(status_code=404, detail="Image not found")
+    # For Cloudinary, images are accessed directly via their URL
+    # This endpoint is kept for backward compatibility
+    return {"message": "Image is hosted on Cloudinary", "url": path}
 
 @api_router.post("/orders", response_model=Order)
 async def create_order(order: OrderCreate):
@@ -511,11 +493,7 @@ logger = logging.getLogger(__name__)
 
 @app.on_event("startup")
 async def startup():
-    try:
-        init_storage()
-        logger.info("Storage initialized")
-    except Exception as e:
-        logger.error(f"Storage init failed: {e}")
+    logger.info("Application started successfully")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
