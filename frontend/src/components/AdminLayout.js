@@ -22,20 +22,21 @@ const AdminLayout = ({ children }) => {
   return (
     <div className="flex min-h-screen" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #E8EAF6 100%)', fontFamily: 'Inter, sans-serif' }}>
       <aside
-        className="w-64 fixed left-0 top-0 h-full hidden lg:block gradient-card"
-        style={{ borderRight: '1px solid rgba(255, 255, 255, 0.3)' }}
+        className="w-64 fixed left-0 top-0 h-full hidden lg:block"
+        style={{ 
+          background: 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)',
+          boxShadow: '4px 0 20px rgba(102, 126, 234, 0.3)'
+        }}
       >
         <div className="p-6">
-          <h2
-            className="text-2xl font-bold mb-8 gradient-text"
-            style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-          >
-            Restaurant Admin
-          </h2>
+          <div className="mb-8">
+            <h2
+              className="text-2xl font-bold text-white tracking-tight"
+            >
+              ezeserve
+            </h2>
+            <p className="text-sm text-white/70 mt-1">Restaurant Admin</p>
+          </div>
           <nav className="space-y-2">
             {menuItems.map((item) => {
               const Icon = item.icon;
@@ -47,8 +48,9 @@ const AdminLayout = ({ children }) => {
                   onClick={() => navigate(item.path)}
                   className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium"
                   style={{
-                    background: isActive ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
-                    color: isActive ? '#FFFFFF' : '#475569'
+                    backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
+                    color: '#FFFFFF',
+                    backdropFilter: isActive ? 'blur(10px)' : 'none'
                   }}
                 >
                   <Icon size={20} />
@@ -60,8 +62,8 @@ const AdminLayout = ({ children }) => {
           <button
             data-testid="logout-btn"
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl mt-8 transition-all duration-200 font-medium hover:bg-red-50"
-            style={{ color: '#EF4444' }}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl mt-8 transition-all duration-200 font-medium hover:bg-white/10"
+            style={{ color: '#FEE2E2' }}
           >
             <LogOut size={20} />
             Logout
@@ -79,7 +81,7 @@ const AdminLayout = ({ children }) => {
               WebkitTextFillColor: 'transparent'
             }}
           >
-            Admin
+            ezeserve
           </h2>
         </div>
         <main>{children}</main>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
+import LandingPage from '@/pages/LandingPage';
 import CustomerMenu from '@/pages/CustomerMenu';
 import Cart from '@/pages/Cart';
 import OrderStatus from '@/pages/OrderStatus';
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route path="/menu/:restaurantId" element={<CustomerMenu />} />
           <Route path="/cart/:restaurantId" element={<Cart />} />
           <Route path="/order-status/:orderId" element={<OrderStatus />} />
@@ -26,8 +28,6 @@ function App() {
           <Route path="/admin/orders" element={<ProtectedRoute><AdminOrders /></ProtectedRoute>} />
           <Route path="/admin/menu" element={<ProtectedRoute><AdminMenu /></ProtectedRoute>} />
           <Route path="/admin/restaurants" element={<ProtectedRoute><AdminRestaurants /></ProtectedRoute>} />
-          
-          <Route path="/" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-center" richColors />

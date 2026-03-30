@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AdminLayout from '@/components/AdminLayout';
-import { ShoppingBag, Clock, CheckCircle, DollarSign } from 'lucide-react';
+import { ShoppingBag, Clock, CheckCircle, DollarSign, TrendingUp, Users } from 'lucide-react';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
