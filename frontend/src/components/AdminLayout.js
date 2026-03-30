@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { LayoutDashboard, ShoppingBag, Menu, Store, LogOut } from 'lucide-react';
+import { LayoutDashboard, ShoppingBag, Menu, Store, Grid3x3, LogOut } from 'lucide-react';
 
 const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ const AdminLayout = ({ children }) => {
     { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/admin/orders', icon: ShoppingBag, label: 'Orders' },
     { path: '/admin/menu', icon: Menu, label: 'Menu' },
+    { path: '/admin/tables', icon: Grid3x3, label: 'Tables' },
     { path: '/admin/restaurants', icon: Store, label: 'Restaurants' }
   ];
 

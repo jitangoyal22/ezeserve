@@ -165,6 +165,21 @@ class DashboardStats(BaseModel):
     completed_orders: int
     total_revenue: float
 
+class Table(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str
+    restaurant_id: str
+    table_number: str
+    capacity: int
+    status: str
+    qr_code_url: Optional[str] = None
+    created_at: str
+
+class TableCreate(BaseModel):
+    restaurant_id: str
+    table_number: str
+    capacity: int
+
 def verify_token(authorization: str = Header(None)):
     if not authorization or not authorization.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Missing or invalid authorization header")
@@ -438,6 +453,41 @@ async def get_dashboard_stats(restaurant_id: Optional[str] = None, user=Depends(
         completed_orders=completed_orders,
         total_revenue=total_revenue
     )
+
+@api_router.post("/tables", response_model=Table)
+async def create_table(table: TableCreate, user=Depends(verify_token)):
+    doc = {
+        "id": str(uuid.uuid4()),
+        **table.model_dump(),
+        "status": "available",
+        "qr_code_url": None,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    await db.tables.insert_one(doc)
+    return Table(**doc)
+
+@api_router.get("/tables", response_model=List[Table])
+async def get_tables(restaurant_id: Optional[str] = None):
+    query = {"restaurant_id": restaurant_id} if restaurant_id else {}
+    tables = await db.tables.find(query, {"_id": 0}).to_list(1000)
+    return tables
+
+@api_router.put("/tables/{table_id}/status")
+async def update_table_status(table_id: str, status: str, user=Depends(verify_token)):
+    result = await db.tables.update_one(
+        {"id": table_id},
+        {"$set": {"status": status}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Table not found")
+    return {"message": "Table status updated"}
+
+@api_router.delete("/tables/{table_id}")
+async def delete_table(table_id: str, user=Depends(verify_token)):
+    result = await db.tables.delete_one({"id": table_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Table not found")
+    return {"message": "Table deleted"}
 
 @api_router.get("/")
 async def root():

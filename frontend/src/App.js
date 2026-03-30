@@ -9,6 +9,7 @@ import AdminLogin from '@/pages/AdminLogin';
 import AdminDashboard from '@/pages/AdminDashboard';
 import AdminOrders from '@/pages/AdminOrders';
 import AdminMenu from '@/pages/AdminMenu';
+import AdminTables from '@/pages/AdminTables';
 import AdminRestaurants from '@/pages/AdminRestaurants';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import '@/App.css';
@@ -27,6 +28,7 @@ function App() {
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/orders" element={<ProtectedRoute><AdminOrders /></ProtectedRoute>} />
           <Route path="/admin/menu" element={<ProtectedRoute><AdminMenu /></ProtectedRoute>} />
+          <Route path="/admin/tables" element={<ProtectedRoute><AdminTables /></ProtectedRoute>} />
           <Route path="/admin/restaurants" element={<ProtectedRoute><AdminRestaurants /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
