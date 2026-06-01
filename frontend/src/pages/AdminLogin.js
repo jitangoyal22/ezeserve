@@ -142,16 +142,7 @@ const AdminLogin = () => {
           </Button>
         </form>
 
-       // <div className="mt-6 text-center">
-         // <button
-          //  data-testid="toggle-auth-mode-btn"
-           // onClick={() => setIsLogin(!isLogin)}
-           // className="text-sm transition-all duration-200 font-medium"
-          //  style={{ color: '#667eea' }}
-         // >
-         //  {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
-         // </button>
-       // </div>
+        
       </div>
     </div>
   );
