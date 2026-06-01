@@ -142,7 +142,7 @@ const AdminLogin = () => {
           </Button>
         </form>
 
-        <div className="mt-6 text-center">
+       /* <div className="mt-6 text-center">
           <button
             data-testid="toggle-auth-mode-btn"
             onClick={() => setIsLogin(!isLogin)}
@@ -151,7 +151,7 @@ const AdminLogin = () => {
           >
             {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
           </button>
-        </div>
+        </div>*/
       </div>
     </div>
   );
