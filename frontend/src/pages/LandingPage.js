@@ -294,11 +294,11 @@ const LandingPage = () => {
             Join 100+ restaurants already using ezeserve. Setup takes just 15 minutes.
           </p>
           <Button 
-            onClick={() => navigate('/admin/login')}
+           // onClick={() => navigate('/admin/login')}
             className="rounded-full px-8 py-6 text-lg font-semibold flex items-center gap-2 mx-auto"
             style={{ backgroundColor: '#FFFFFF', color: '#667eea' }}
           >
-            Start Your Free Trial
+            Call +91 7888706951 and Start Your Free Trial 
             <ArrowRight size={20} />
           </Button>
         </div>
