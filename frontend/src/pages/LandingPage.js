@@ -130,7 +130,7 @@ const LandingPage = () => {
               className="rounded-full px-8 py-6 text-lg font-semibold flex items-center gap-2"
               style={{ backgroundColor: '#FFFFFF', color: '#667eea' }}
             >
-              Start Free Trial - Please call + 91 7888706951
+              Start Free Trial
               <ArrowRight size={20} />
             </Button>
             <Button 
