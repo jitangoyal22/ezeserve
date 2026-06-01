@@ -45,7 +45,7 @@ const LandingPage = () => {
       price: '499',
       period: 'month',
       features: [
-        'Up to 50 orders/day',
+        'Unlimited orders/day',
         'QR code menu',
         'Basic analytics',
         'Email support',
@@ -59,9 +59,7 @@ const LandingPage = () => {
       period: 'month',
       features: [
         'Unlimited orders',
-        'Kanban order board',
         'Advanced analytics',
-        'WhatsApp integration',
         'Up to 5 Restaurants',
         'Priority support'
       ],
@@ -124,7 +122,7 @@ const LandingPage = () => {
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
             Replace outdated POS systems. Get customers ordering in seconds with QR codes. 
-            Save ₹40,000+ annually vs Petpooja.
+            Save ₹40,000+ annually vs Other POS.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
@@ -153,7 +151,7 @@ const LandingPage = () => {
               Everything You Need to Run a Modern Restaurant
             </h2>
             <p className="text-xl" style={{ color: '#64748B' }}>
-              Powerful features that Petpooja charges extra for. Included in every plan.
+              Powerful features that other POS charges extra for. Included in every plan.
             </p>
           </div>
 
@@ -188,7 +186,7 @@ const LandingPage = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4" style={{ color: '#1E293B' }}>
-              ezeserve vs Petpooja
+              ezeserve vs Other POS
             </h2>
             <p className="text-xl" style={{ color: '#64748B' }}>
               See why modern restaurants are switching to ezeserve
@@ -198,7 +196,7 @@ const LandingPage = () => {
           <div className="rounded-3xl overflow-hidden" style={{ backgroundColor: '#F9FAFB' }}>
             <div className="grid grid-cols-3 gap-4 p-6 font-bold text-center" style={{ backgroundColor: '#667eea', color: '#FFFFFF' }}>
               <div>Feature</div>
-              <div>Petpooja</div>
+              <div>Other POS</div>
               <div>ezeserve ✨</div>
             </div>
             {petpoojaComparison.map((row, index) => (
