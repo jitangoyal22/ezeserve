@@ -208,7 +208,11 @@ const CustomerMenu = () => {
           <div className="max-w-7xl mx-auto">
             <Button
               data-testid="view-cart-btn"
-              onClick={() => navigate(`/cart/${restaurantId}`)}
+              onClick={() => {
+                const params = new URLSearchParams(window.location.search);
+                const t = params.get('table');
+                navigate(`/cart/${restaurantId}${t ? `?table=${encodeURIComponent(t)}` : ''}`);
+              }}
               className="w-full rounded-2xl py-4 text-base font-semibold transition-all duration-200 holographic"
               style={{
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
