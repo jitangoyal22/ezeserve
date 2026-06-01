@@ -126,11 +126,11 @@ const LandingPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              onClick={() => navigate('/admin/login')}
+            //  onClick={() => navigate('/admin/login')}
               className="rounded-full px-8 py-6 text-lg font-semibold flex items-center gap-2"
               style={{ backgroundColor: '#FFFFFF', color: '#667eea' }}
             >
-              Start Free Trial
+              Start Free Trial - Please call + 91 7888706951
               <ArrowRight size={20} />
             </Button>
             <Button 
