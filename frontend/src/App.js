@@ -11,6 +11,8 @@ import AdminOrders from '@/pages/AdminOrders';
 import AdminMenu from '@/pages/AdminMenu';
 import AdminTables from '@/pages/AdminTables';
 import AdminRestaurants from '@/pages/AdminRestaurants';
+import AdminBilling from '@/pages/AdminBilling';
+import AdminUsers from '@/pages/AdminUsers';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import '@/App.css';
 
@@ -23,13 +25,15 @@ function App() {
           <Route path="/menu/:restaurantId" element={<CustomerMenu />} />
           <Route path="/cart/:restaurantId" element={<Cart />} />
           <Route path="/order-status/:orderId" element={<OrderStatus />} />
-          
+
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/orders" element={<ProtectedRoute><AdminOrders /></ProtectedRoute>} />
           <Route path="/admin/menu" element={<ProtectedRoute><AdminMenu /></ProtectedRoute>} />
           <Route path="/admin/tables" element={<ProtectedRoute><AdminTables /></ProtectedRoute>} />
-          <Route path="/admin/restaurants" element={<ProtectedRoute><AdminRestaurants /></ProtectedRoute>} />
+          <Route path="/admin/restaurants" element={<ProtectedRoute requireSuperAdmin><AdminRestaurants /></ProtectedRoute>} />
+          <Route path="/admin/billing" element={<ProtectedRoute><AdminBilling /></ProtectedRoute>} />
+          <Route path="/admin/users" element={<ProtectedRoute requireSuperAdmin><AdminUsers /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-center" richColors />

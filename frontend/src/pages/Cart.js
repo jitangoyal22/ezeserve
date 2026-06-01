@@ -22,6 +22,10 @@ const Cart = () => {
     if (savedCart) {
       setCart(JSON.parse(savedCart));
     }
+    // Pre-fill table number from QR query param
+    const urlParams = new URLSearchParams(window.location.search);
+    const tParam = urlParams.get('table');
+    if (tParam) setTableNumber(tParam);
   }, [restaurantId]);
 
   useEffect(() => {
